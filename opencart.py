@@ -1,6 +1,6 @@
 #Faisons le premier test avec Tkinter
 
-
+from tkinter import *
 import tkinter as tk
 import mysql.connector
 
