@@ -1,7 +1,7 @@
 #Faisons le premier test avec Tkinter
 
+from tkinter import *
 import tkinter as tk
-from tkinter import ttk
 import mysql.connector
 
 # Fonction pour récupérer et afficher la liste des clients
@@ -34,14 +34,14 @@ def get_total_products():
     total_products = cursor.fetchone()[0]
     result_label.config(text="Nombre total de produits: {}".format(total_products))
 
-# Fonction pour récupérer et afficher la liste des utilisateurs connectés
+# Fonction pour récupérer et afficher la liste des utilisateurs connectés sur la base de donnee
 def get_online_users_list():
     clear_result_label()  # Effacer le texte précédent
     cursor.execute("SELECT customer_id FROM oc_customer_online")
     online_users = cursor.fetchall()
     # Convertir les valeurs int en str
     online_users_list = '\n'.join([str(user[0]) for user in online_users])
-    result_label.config(text="Liste des utilisateurs connectés:\n{}".format(online_users_list))
+    result_label.config(text="Id utilisateurs connectes:\n{}".format(online_users_list))
 
 # Fonction pour effacer le texte de l'étiquette result_label
 def clear_result_label():
@@ -89,3 +89,7 @@ result_label.pack(pady=10)
 
 # Exécution de la boucle principale Tkinter
 root.mainloop()
+
+
+
+print("bonjour absa")
