@@ -34,7 +34,18 @@ def get_total_products():
     total_products = cursor.fetchone()[0]
     result_label.config(text="Nombre total de produits: {}".format(total_products))
 
+# Fonction pour récupérer et afficher la liste des utilisateurs connectés
+def get_online_users_list():
+    clear_result_label()  # Effacer le texte précédent
+    cursor.execute("SELECT customer_id FROM oc_customer_online")
+    online_users = cursor.fetchall()
+    # Convertir les valeurs int en str
+    online_users_list = '\n'.join([str(user[0]) for user in online_users])
+    result_label.config(text="Liste des utilisateurs connectés:\n{}".format(online_users_list))
 
+# Fonction pour effacer le texte de l'étiquette result_label
+def clear_result_label():
+    result_label.config(text="")
 # Connexion à la base de données OpenCart
 
 connection = mysql.connector.connect(
