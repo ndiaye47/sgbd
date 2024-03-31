@@ -4,24 +4,20 @@ from tkinter import *
 import tkinter as tk
 import mysql.connector
 
-# Fonction pour récupérer et afficher le nombre d'utilisateurs
-def get_user_count():
-    cursor.execute("SELECT COUNT(*) FROM oc_user")
-    user_count = cursor.fetchone()[0]
-    result_label.config(text="Nombre d'utilisateurs: {}".format(user_count))
+# Fonction pour récupérer et afficher la liste des clients
+def get_customer_list():
+    clear_result_label()  # Effacer le texte précédent
+    cursor.execute("SELECT firstname,lastname FROM oc_customer")
+    customers = cursor.fetchall()
+    customer_list = '\n'.join([customer[0] for customer in customers])
+    result_label.config(text="Liste des clients:\n{}".format(customer_list))
 
-# Fonction pour récupérer et afficher le nombre d'utilisateurs connectés
-def get_online_user_count():
-    cursor.execute("SELECT COUNT(*) FROM oc_customer_online")
-    online_user_count = cursor.fetchone()[0]
-    result_label.config(text="Nombre d'utilisateurs connectés: {}".format(online_user_count))
-
-# Fonction pour récupérer et afficher le nombre de produits commandés
-def get_ordered_product_count():
-    cursor.execute("SELECT SUM(quantity) FROM oc_order_product")
-    ordered_product_count = cursor.fetchone()[0]
-    result_label.config(text="Nombre de produits commandés: {}".format(ordered_product_count))
-
+# Fonction pour récupérer et afficher le nombre total de clients
+def get_total_customers():
+    clear_result_label()  # Effacer le texte précédent
+    cursor.execute("SELECT COUNT(*) FROM oc_customer")
+    total_customers = cursor.fetchone()[0]
+    result_label.config(text="Nombre total de clients: {}".format(total_customers))
 # Connexion à la base de données OpenCart
 
 connection = mysql.connector.connect(
