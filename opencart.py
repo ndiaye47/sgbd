@@ -18,6 +18,23 @@ def get_total_customers():
     cursor.execute("SELECT COUNT(*) FROM oc_customer")
     total_customers = cursor.fetchone()[0]
     result_label.config(text="Nombre total de clients: {}".format(total_customers))
+
+# Fonction pour récupérer et afficher la liste des produits
+def get_product_list():
+    clear_result_label()  # Effacer le texte précédent
+    cursor.execute("select model from oc_product")
+    products = cursor.fetchall()
+    product_list = '\n'.join([product[0] for product in products])
+    result_label.config(text="Liste des produits:\n{}".format(product_list))
+
+# Fonction pour récupérer et afficher le nombre total de produits
+def get_total_products():
+    clear_result_label()  # Effacer le texte précédent
+    cursor.execute("SELECT COUNT(*) FROM oc_product")
+    total_products = cursor.fetchone()[0]
+    result_label.config(text="Nombre total de produits: {}".format(total_products))
+
+
 # Connexion à la base de données OpenCart
 
 connection = mysql.connector.connect(
