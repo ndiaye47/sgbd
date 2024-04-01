@@ -74,3 +74,10 @@ tab_control.add(tab2, text='Client')
 tab_control.add(tab3, text='Produit')
 
 tab_control.pack(expand=1, fill='both')
+
+# Création des boutons pour chaque onglet
+customer_list_button = tk.Button(tab2, text="Liste des clients", command=get_customer_list)
+customer_list_button.pack(pady=5)
+
+total_customers_button = tk.Button(tab2, text="Nombre total de clients", command=get_total_customers)
+total_customers_button.pack(pady=5)
