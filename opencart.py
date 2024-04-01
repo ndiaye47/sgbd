@@ -91,3 +91,10 @@ product_list_button.pack(pady=5)
 #Le total
 total_products_button = tk.Button(tab3, text="Nombre total de produits", command=get_total_products)
 total_products_button.pack(pady=5)
+
+# Étiquette pour afficher le résultat
+result_label = tk.Label(root, text="")
+result_label.pack(pady=10)
+
+# Exécution de la boucle principale Tkinter
+root.mainloop()
