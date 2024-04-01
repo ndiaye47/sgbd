@@ -81,3 +81,13 @@ customer_list_button.pack(pady=5)
 
 total_customers_button = tk.Button(tab2, text="Nombre total de clients", command=get_total_customers)
 total_customers_button.pack(pady=5)
+
+online_users_button = tk.Button(tab1, text="Liste des utilisateurs connectés", command=get_online_users_list)
+online_users_button.pack(pady=5)
+
+product_list_button = tk.Button(tab3, text="Liste des produits", command=get_product_list)
+product_list_button.pack(pady=5)
+
+#Le total
+total_products_button = tk.Button(tab3, text="Nombre total de produits", command=get_total_products)
+total_products_button.pack(pady=5)
