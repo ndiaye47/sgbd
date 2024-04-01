@@ -2,6 +2,7 @@
 
 from tkinter import *
 import tkinter as tk
+from tkinter import ttk
 import mysql.connector
 
 # Fonction pour récupérer et afficher la liste des clients
@@ -61,35 +62,15 @@ cursor = connection.cursor()
 root = tk.Tk()
 root.title("Monitoring OpenCart")
 
+# Création de l'onglet principal
 
-# Création des onglets
-root.title("Monitoring OpenCart")
+tab_control = ttk.Notebook(root)
+tab1 = ttk.Frame(tab_control)
+tab2 = ttk.Frame(tab_control)
+tab3 = ttk.Frame(tab_control)
 
+tab_control.add(tab1, text='Admin')
+tab_control.add(tab2, text='Client')
+tab_control.add(tab3, text='Produit')
 
-menuPrincipale = Menu(root)
-
-menuPrincipale.add_cascade(label="admin")
-menuPrincipale.add_cascade(label="Client")
-menuPrincipale.add_cascade(label="Produit")
-
-root.config(menu=menuPrincipale)
-# Création des boutons pour afficher différentes options
-user_button = tk.Button(root, text="Nombre d'utilisateurs", command=get_user_count)
-user_button.pack(pady=5)
-
-online_user_button = tk.Button(root, text="Nombre d'utilisateurs connectés", command=get_online_user_count)
-online_user_button.pack(pady=5)
-
-ordered_product_button = tk.Button(root, text="Nombre de produits commandés", command=get_ordered_product_count)
-ordered_product_button.pack(pady=5)
-
-# Étiquette pour afficher le résultat
-result_label = tk.Label(root, text="")
-result_label.pack(pady=10)
-
-# Exécution de la boucle principale Tkinter
-root.mainloop()
-
-
-
-print("bonjour absa")
+tab_control.pack(expand=1, fill='both')
