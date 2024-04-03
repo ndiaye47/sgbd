@@ -125,7 +125,7 @@ top_customers_button.pack(pady=5)
 
 
 #bouton WishList
-wishlist_product_ids_button = tk.Button(tab1, text="roduits dans la liste des souhaits", command=get_wishlist_product_ids)
+wishlist_product_ids_button = tk.Button(tab1, text="Produits dans la liste des souhaits", command=get_wishlist_product_ids)
 wishlist_product_ids_button.pack(pady=5)
 
 #Le total
