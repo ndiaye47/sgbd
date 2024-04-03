@@ -44,7 +44,7 @@ def get_online_users_list():
     online_users_list = '\n'.join([str(user[0]) for user in online_users])
     result_label.config(text="Id utilisateurs connectes:\n{}".format(online_users_list))
 
-# Fonction pour récupérer et afficher la liste des souhaits avec l'id du produit
+# Fonction pour récupérer et afficher la liste des souhaits
 def get_wishlist_product_ids():
     clear_result_label()  # Effacer le texte précédent
     cursor.execute("SELECT product_id FROM oc_customer_wishlist")
