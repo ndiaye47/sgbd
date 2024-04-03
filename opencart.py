@@ -64,11 +64,11 @@ def get_sales_trends():
 #Fonction clients qui a plus de commandes
 def get_top_customers():
     clear_result_label()  # Effacer le texte précédent
-    cursor.execute("SELECT customer_id, COUNT(*) AS total_orders FROM oc_order GROUP BY customer_id ORDER BY total_orders DESC")
+    cursor.execute("SELECT customer_id,firstname,lastname, COUNT(*) AS total_orders FROM oc_order GROUP BY customer_id ORDER BY total_orders DESC")
     top_customers = cursor.fetchall()
     top_customers_text = ""
     for customer in top_customers:
-        top_customers_text += "ID client: {}, Nombre de commandes: {}\n".format(customer[0], customer[1])
+        top_customers_text += "Id: {}, Prenom: {}, Nom: {}, Nbre Commande: {} \n".format(customer[0], customer[1],customer[2],customer[3],)
     result_label.config(text="Clients avec le plus de commandes:\n{}".format(top_customers_text))
     
 
