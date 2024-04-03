@@ -51,6 +51,15 @@ def get_wishlist_product_ids():
     wishlist_products = cursor.fetchall()
     wishlist_product_ids = '\n'.join([str(product[0]) for product in wishlist_products])
     result_label.config(text="ID des produits dans la liste des souhaits:\n{}".format(wishlist_product_ids))    
+# Fonction pour récupérer les tendances de ventes mensuelle
+def get_sales_trends():
+    clear_result_label()  # Effacer le texte précédent
+    cursor.execute("SELECT DATE_FORMAT(date_added, '%Y-%m') AS month, SUM(total) AS total_sales FROM oc_order GROUP BY month ORDER BY month")
+    sales_trends = cursor.fetchall()
+    sales_trends_text = ""
+    for trend in sales_trends:
+        sales_trends_text += "Mois: {}, Ventes: {}\n".format(trend[0], trend[1])
+    result_label.config(text="Tendances de vente par mois:\n{}".format(sales_trends_text))
 
 # Fonction pour effacer le texte de l'étiquette result_label
 def clear_result_label():
@@ -95,6 +104,10 @@ online_users_button.pack(pady=5)
 
 product_list_button = tk.Button(tab3, text="Liste des produits", command=get_product_list)
 product_list_button.pack(pady=5)
+
+sales_trends_button = tk.Button(tab1, text="Tendances de vente par mois", command=get_sales_trends)
+sales_trends_button.pack(pady=5)
+
 
 #bouton WishList
 wishlist_product_ids_button = tk.Button(tab1, text="ID des produits dans la liste des souhaits", command=get_wishlist_product_ids)
