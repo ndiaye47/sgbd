@@ -44,6 +44,14 @@ def get_online_users_list():
     online_users_list = '\n'.join([str(user[0]) for user in online_users])
     result_label.config(text="Id utilisateurs connectes:\n{}".format(online_users_list))
 
+# Fonction pour récupérer et afficher la liste des souhaits avec l'id du produit
+def get_wishlist_product_ids():
+    clear_result_label()  # Effacer le texte précédent
+    cursor.execute("SELECT product_id FROM oc_customer_wishlist")
+    wishlist_products = cursor.fetchall()
+    wishlist_product_ids = '\n'.join([str(product[0]) for product in wishlist_products])
+    result_label.config(text="ID des produits dans la liste des souhaits:\n{}".format(wishlist_product_ids))    
+
 # Fonction pour effacer le texte de l'étiquette result_label
 def clear_result_label():
     result_label.config(text="")
@@ -87,6 +95,10 @@ online_users_button.pack(pady=5)
 
 product_list_button = tk.Button(tab3, text="Liste des produits", command=get_product_list)
 product_list_button.pack(pady=5)
+
+#bouton WishList
+wishlist_product_ids_button = tk.Button(tab1, text="ID des produits dans la liste des souhaits", command=get_wishlist_product_ids)
+wishlist_product_ids_button.pack(pady=5)
 
 #Le total
 total_products_button = tk.Button(tab3, text="Nombre total de produits", command=get_total_products)
