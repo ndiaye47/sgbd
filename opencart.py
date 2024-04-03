@@ -61,7 +61,7 @@ def get_sales_trends():
         sales_trends_text += "Mois: {}, Ventes: {}\n".format(trend[0], trend[1])
     result_label.config(text="Tendances de vente par mois:\n{}".format(sales_trends_text))
 
-#Fonction clients plus de commandes
+#Fonction clients qui a plus de commandes
 def get_top_customers():
     clear_result_label()  # Effacer le texte précédent
     cursor.execute("SELECT customer_id, COUNT(*) AS total_orders FROM oc_order GROUP BY customer_id ORDER BY total_orders DESC")
