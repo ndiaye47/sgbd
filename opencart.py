@@ -44,7 +44,7 @@ def get_online_users_list():
     online_users_list = '\n'.join([str(user[0]) for user in online_users])
     result_label.config(text="Id utilisateurs connectes:\n{}".format(online_users_list))
 
-# Fonction pour récupérer et afficher la liste des souhaits avec l'id du produit
+# Fonction pourafficher le nom dans la liste des souhait
 def get_wishlist_product_ids():
     clear_result_label()  # Effacer le texte précédent
     cursor.execute("select name from oc_product_description inner join  oc_customer_wishlist on oc_customer_wishlist.product_id = oc_product_description.product_id ")
@@ -121,7 +121,7 @@ sales_trends_button.pack(pady=5)
 
 
 #bouton WishList
-wishlist_product_ids_button = tk.Button(tab1, text="Produits dans la liste des souhaits", command=get_wishlist_product_ids)
+wishlist_product_ids_button = tk.Button(tab1, text="roduits dans la liste des souhaits", command=get_wishlist_product_ids)
 wishlist_product_ids_button.pack(pady=5)
 
 #Le total
