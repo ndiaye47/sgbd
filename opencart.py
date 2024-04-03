@@ -119,6 +119,10 @@ product_list_button.pack(pady=5)
 sales_trends_button = tk.Button(tab1, text="Tendances de vente par mois", command=get_sales_trends)
 sales_trends_button.pack(pady=5)
 
+top_customers_button = tk.Button(tab2, text="Clients avec le plus de commandes", command=get_top_customers)
+top_customers_button.pack(pady=5)
+
+
 
 #bouton WishList
 wishlist_product_ids_button = tk.Button(tab1, text="roduits dans la liste des souhaits", command=get_wishlist_product_ids)
